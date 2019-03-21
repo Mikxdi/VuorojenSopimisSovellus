@@ -7,6 +7,7 @@ def tasks_form():
 
 @app.route("/user/", methods=["POST"])
 def user_create():
-    print(request.form.get("name"))
-  
+    U  = User(request.form.get("name"))
+    N  = User(request.form.get("nick"))
+   
     return "Toimi!"
