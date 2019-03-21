@@ -6,7 +6,7 @@ def tasks_form():
     return render_template("user/new.html")
 
 @app.route("/user/", methods=["POST"])
-def tasks_create():
+def user_create():
     print(request.form.get("name"))
   
     return "Toimi!"

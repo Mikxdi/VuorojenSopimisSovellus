@@ -1,6 +1,6 @@
 from application import db
 
-class Task(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
  
 
