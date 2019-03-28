@@ -9,3 +9,5 @@ ja taulu paikoista, joissa vuoro pidetään
 
 Käyttäjät voivat lisätä ehdotuksia sopiviksi päiviksi. Mikäli kyseinen ehdotus saa päätetyn määrän 
 ääniä, muuttuu vuoron tila alustavasta varattavaan.
+
+[Heroku](https://vuoronvaraussovellus.herokuapp.com/)
