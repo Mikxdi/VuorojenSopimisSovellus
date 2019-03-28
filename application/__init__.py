@@ -17,5 +17,8 @@ from application import views
 from application.user import models
 from application.user import views
 
+from application.suggestion import models
+from application.suggestion import views
+
 
 db.create_all()

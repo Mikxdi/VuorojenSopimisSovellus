@@ -2,8 +2,8 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('suggestion_create') }}">
-  <input type="text" name="nick"/>
   <input type="text" name="name"/>
-  <input type="submit" value="Lisää käyttäjä"/>
+  <input type="text" name="when"/>
+  <input type="submit" value="Lisää vuoro"/>
 </form>
 {% endblock %}

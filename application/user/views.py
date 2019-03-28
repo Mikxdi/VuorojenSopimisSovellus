@@ -10,4 +10,4 @@ def user_create():
     U  = User(request.form.get("name"))
     N  = User(request.form.get("nick"))
    
-    return "Toimi!"
+    return "Käyttäjä lisätty"
