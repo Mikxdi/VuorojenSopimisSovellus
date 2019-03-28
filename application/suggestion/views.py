@@ -1,5 +1,5 @@
 
-
+from application.suggestion.models import Suggestion
 from application import app
 from flask import render_template, request
 
@@ -10,10 +10,9 @@ def suggestion_form():
 @app.route("/suggestion/", methods=["POST"])
 def suggestion_create():
     n = Suggestion(request.form.get("name"))
-    w = Suggestion(request.form.get("nick"))
+    w = Suggestion(request.form.get("when"))
 
-    db.session().add(n)
-    db.session().add(w)
+    db.session().add(n, w)
     db.session().commit()
   
     return "hello world!"
