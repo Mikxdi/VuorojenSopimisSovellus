@@ -12,10 +12,11 @@ def suggestion_form():
 @app.route("/suggestion/", methods=["POST"])
 def suggestion_create():
     form = SuggestionForm(request.form)
+    if not form.validate():
+        return render_template("suggestion/new.html", form=form)
     n = Suggestion(form.name.data, form.when.data)
 
     db.session().add(n)
     db.session().commit()
-  
-    return "hello world!"
+    return redirect(url_for("index"))
 
