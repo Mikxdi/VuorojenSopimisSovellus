@@ -1,9 +1,42 @@
 {% extends "layout.html" %}
-  
+
 {% block body %}
-<form method="POST" action="{{ url_for('suggestion_create') }}">
-  <input type="text" name="name"/>
-  <input type="text" name="when"/>
-  <input type="submit" value="Lisää vuoro"/>
+<form method="POST" action="{{ url_for('suggestion_create') }}"></form>
+  <table>
+    <tr>
+      <td>
+	      {{ form.name.label }}
+      </td>
+      <td>
+	      {{ form.name }}
+      </td>
+      <td>
+        <ul>
+            {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+	      {{ form.when.label }}
+      </td>
+      <td>
+	      {{ form.when }}
+      </td>
+      <td>
+        <ul>
+            {% for error in form.when.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+	<input type="submit" value="Luo ehdotus"/>
+      </td>
+    </tr>
 </form>
 {% endblock %}
