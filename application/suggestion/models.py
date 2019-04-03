@@ -5,7 +5,7 @@ class Suggestion(db.Model):
  
 
     name = db.Column(db.String(144), nullable=False)
-    when = db.Column(db.String(144), nullable=False)
+    when = db.Column(db.Date, nullable=False)
 
     def __init__(self, name, when):
         self.name = name
