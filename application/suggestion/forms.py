@@ -4,7 +4,7 @@ from wtforms.fields.html5 import DateField
   
 class SuggestionForm(FlaskForm):
     name = StringField("Nimi", [validators.input_required(message="Anna vuoron nimi")])
-    when = DateField("Milloin", format='%yyyy-%mm-%dd')
+    when = DateField("Milloin")
   
     class Meta:
         csrf = False
