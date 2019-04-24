@@ -6,7 +6,9 @@ class Suggestion(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     when = db.Column(db.Date, nullable=False)
+    location_id= db.Column(db.Integer, db.ForeignKey('location.id'), nullable = False)
 
-    def __init__(self, name, when):
+    def __init__(self, name, when, location_id):
         self.name = name
         self.when = when
+        self.location_id = location_id
