@@ -18,4 +18,9 @@ def location_create():
 
     db.session().add(n)
     db.session().commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("location_list"))
+
+@app.route("/location/", methods=["GET"])
+@login_required
+def location_list():
+    return render_template("location/list.html", form = LocationForm(), loc = Location.query.all())

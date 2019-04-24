@@ -20,5 +20,9 @@ def suggestion_create():
 
     db.session().add(n)
     db.session().commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("suggestion_list"))
 
+@app.route("/suggestion/", methods=["GET"])
+@login_required
+def suggestion_list():
+    return render_template("suggestion/list.html", form = SuggestionForm(), sugg = Suggestion.query.all())

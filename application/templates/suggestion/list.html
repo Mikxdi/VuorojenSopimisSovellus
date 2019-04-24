@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h3>Sovellukseen lisätyt ehdotukset</h3>
+    <table>
+        <tr align="left">
+            <th>Ehdotuksen nimi</th>
+            <th>Aika</th>
+        </tr>
+        <ul>
+            {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.when.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% for s in sugg %}
+            <tr align="left">
+                <td>{{s.name}}</td>
+                <td>{{s.when}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
