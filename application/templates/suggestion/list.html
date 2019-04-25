@@ -7,6 +7,7 @@
             <th>Ehdotuksen nimi</th>
             <th>Aika</th>
             <th>Paikka</th>
+            <th>Toteutuuko</th>
         </tr>
         <ul>
             {% for error in form.name.errors %}
@@ -21,6 +22,7 @@
                 <td>{{s.name}}</td>
                 <td>{{s.when}}</td>
                 <td>{{s.location}}</td>
+                <td>{{s.success}}</td>
             </tr>
         {% endfor %}
     </table>

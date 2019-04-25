@@ -12,7 +12,7 @@ def suggestion_form():
     form = SuggestionForm()
     locations = []
     for location in Location.query.all():
-        label = location.name + " " + str(location.price)
+        label = location.name 
         locations.append((location.id, label))
     form.location.choices = locations
     return render_template("suggestion/new.html", form=form)
@@ -23,14 +23,14 @@ def suggestion_create():
     form = SuggestionForm(request.form)
     locations = []
     for location in Location.query.all():
-        label = location.name + " " + str(location.price)
+        label = location.name
         locations.append((location.id, label))
     form.location.choices = locations
     if not form.validate():
         return render_template("suggestion/new.html", form=form)
 
     
-    n = Suggestion(form.name.data, form.when.data, form.location.data)
+    n = Suggestion(form.name.data, form.when.data, form.location.data, False)
 
     db.session().add(n)
     db.session().commit()
