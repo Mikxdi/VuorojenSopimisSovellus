@@ -4,6 +4,7 @@ from flask import render_template, request, url_for, redirect
 from application import db
 from application.location.forms import LocationForm
 from flask_login import login_required
+from application.suggestion.models import Suggestion
 
 @app.route("/location/new/")
 def location_form():
@@ -24,3 +25,12 @@ def location_create():
 @login_required
 def location_list():
     return render_template("location/list.html", form = LocationForm(), loc = Location.query.all())
+
+@app.route("/location/remove/<locId>", methods=["POST"])
+@login_required
+def location_remove(locId):
+    for suggestions in Suggestion.query.filter_by(location_id = locId):
+        suggestions.query.delete()
+    Location.query.filter_by(id=locId).delete()
+    db.session().commit()
+    return redirect(url_for("location_list"))

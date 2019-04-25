@@ -20,6 +20,11 @@
                 <td>{{lo.name}}</td>
                 <td>{{lo.price}}</td>
             </tr>
+            <td>
+                <form method="POST" action="{{ url_for('location_remove', locId = lo.id)}}">
+                    <input type="submit" value="Poista paikka">
+                </form>
+            </td>
         {% endfor %}
     </table>
 {% endblock %}
