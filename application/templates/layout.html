@@ -9,6 +9,11 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Vuoronvaraussovellus</a>
+            {% if current_user.is_authenticated %}
+            <a class="nav-item navbar-text">
+            Kirjautunut nimellä {{ current_user.name }}
+            </a>
+            {% endif %}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,11 +32,6 @@
               </div>
             </div>
         </nav>
-        {% if current_user.is_authenticated %}
-        <p>
-        Kirjautunut nimellä {{ current_user.name }}
-        </p>
-        {% endif %}
         <main role="main" class="container">
             {% block body %}
             <p>

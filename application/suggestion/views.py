@@ -40,3 +40,10 @@ def suggestion_create():
 @login_required
 def suggestion_list():
     return render_template("suggestion/list.html", form = SuggestionForm(), sugg = Suggestion.query.all())
+
+@app.route("/suggestion/remove/<suggId>", methods=["POST"])
+@login_required
+def suggestion_remove(suggId):
+    Suggestion.query.filter_by(id=suggId).delete()
+    db.session().commit()
+    return redirect(url_for("suggestion_list"))

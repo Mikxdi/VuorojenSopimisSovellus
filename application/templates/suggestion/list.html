@@ -23,7 +23,13 @@
                 <td>{{s.when}}</td>
                 <td>{{s.location}}</td>
                 <td>{{s.success}}</td>
-            </tr>
+                <td>
+                    <form method="POST" action="{{ url_for('suggestion_remove', suggId = s.id)}}">
+                        <input type="submit" value="Poista ehdotus">
+                    </form>
+                </td>
+            
+            </tr> 
         {% endfor %}
     </table>
 {% endblock %}
