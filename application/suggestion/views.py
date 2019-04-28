@@ -89,4 +89,5 @@ def suggestion_vote(suggId):
     if votes >= 10:
         suggTrue = Suggestion.query.get(suggId)
         suggTrue.success = True
+        db.session().commit()
     return redirect(url_for("suggestion_list"))
