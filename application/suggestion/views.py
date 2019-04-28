@@ -81,5 +81,5 @@ def suggestion_vote(suggId):
     
     nVote = Vote(current_user, suggId)
     db.session().add(nVote)
-    db.session().commit
+    db.session().commit()
     return redirect(url_for("suggestion_list"))
