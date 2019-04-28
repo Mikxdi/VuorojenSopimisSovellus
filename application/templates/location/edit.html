@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('location_create') }}">
+<form method="POST" action="{{ url_for('location_edit', locId = location.id) }}">
   <table>
     <tr>
       <td>
@@ -35,7 +35,7 @@
     </tr>
     <tr>
       <td colspan="2">
-	<input type="submit" value="Luo paikka"/>
+	<input type="submit" value="Päivitä paikka"/>
       </td>
     </tr>
 </form>

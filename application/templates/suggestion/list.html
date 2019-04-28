@@ -24,8 +24,18 @@
                 <td>{{s.location}}</td>
                 <td>{{s.success}}</td>
                 <td>
+                    <form method="POST" action="{{ url_for('suggestion_vote', suggId = s.id)}}">
+                        <input type="submit" value="Anna ääni">
+                    </form>
+                </td>
+                <td>
                     <form method="POST" action="{{ url_for('suggestion_remove', suggId = s.id)}}">
                         <input type="submit" value="Poista ehdotus">
+                    </form>
+                </td>
+                <td>
+                    <form method="GET" action="{{ url_for('suggestion_edit', suggId = s.id)}}">
+                        <input type="submit" value="Muokkaa ehdotusta">
                     </form>
                 </td>
             

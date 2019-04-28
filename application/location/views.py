@@ -5,6 +5,7 @@ from application import db
 from application.location.forms import LocationForm
 from flask_login import login_required
 from application.suggestion.models import Suggestion
+from application.suggestion.models import Vote
 
 @app.route("/location/new/")
 def location_form():
@@ -32,5 +33,28 @@ def location_remove(locId):
     for suggestions in Suggestion.query.filter_by(location_id = locId):
         suggestions.query.delete()
     Location.query.filter_by(id=locId).delete()
+    db.session().commit()
+    return redirect(url_for("location_list"))
+
+
+@app.route("/location/edit/<locId>", methods=["POST", "GET"])
+@login_required
+def location_edit(locId):
+    locUpdate = Location.query.get(locId)
+
+    form = LocationForm(request.form)
+    form.name.data = locUpdate.name
+    form.price.data = locUpdate.price
+
+    if request.method == "GET":
+        return render_template("location/edit.html" , form = form, location = locUpdate)
+
+    if not form.validate():
+        return render_template("location/edit.html", form=form)
+    
+    form = LocationForm(request.form)
+    locUpdate.name = form.name.data
+    locUpdate.price = form.price.data
+
     db.session().commit()
     return redirect(url_for("location_list"))

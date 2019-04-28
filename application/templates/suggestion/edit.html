@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('location_create') }}">
+<form method="POST" action="{{ url_for('suggestion_edit', suggId =suggestion.id) }}">
   <table>
     <tr>
       <td>
@@ -20,22 +20,37 @@
     </tr>
     <tr>
       <td>
-	      {{ form.price.label }}
+	      {{ form.when.label }}
       </td>
       <td>
-	      {{ form.price }}
+	      {{ form.when }}
       </td>
       <td>
         <ul>
-            {% for error in form.price.errors %}
+            {% for error in form.when.errors %}
                 <li>{{ error }}</li>
             {% endfor %}
         </ul>
       </td>
     </tr>
     <tr>
+        <td>
+          {{ form.location.label}}
+        </td>
+        <td>
+          {{ form.location }}
+        </td>
+        <td>
+          <ul>
+              {% for error in form.location.errors %}
+                  <li>{{ error }}</li>
+              {% endfor %}
+          </ul>
+        </td>
+    </tr>
+    <tr>
       <td colspan="2">
-	<input type="submit" value="Luo paikka"/>
+	<input type="submit" value="Päivitä ehdotus"/>
       </td>
     </tr>
 </form>

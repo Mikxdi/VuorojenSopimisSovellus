@@ -25,6 +25,11 @@
                     <input type="submit" value="Poista paikka">
                 </form>
             </td>
+            <td>
+                <form method="GET" action="{{ url_for('location_edit', locId = lo.id)}}">
+                    <input type="submit" value="Muokkaa paikkaa">
+                </form>
+            </td>
         {% endfor %}
     </table>
 {% endblock %}

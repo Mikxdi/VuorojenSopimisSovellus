@@ -10,6 +10,8 @@ class User(db.Model):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
+    vote = db.relationship("Vote", backref = 'account', cascade = "all, delete-orphan")
+
     def __init__(self, name, username, password):
         self.name = name
         self.username = username
