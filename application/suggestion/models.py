@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 
 class Suggestion(db.Model):
     id = db.Column(db.Integer, primary_key=True)

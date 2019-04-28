@@ -31,6 +31,8 @@ def location_list():
 @login_required
 def location_remove(locId):
     for suggestions in Suggestion.query.filter_by(location_id = locId):
+        for votes in Vote.query.filter_by(suggestion_id = suggestions.id):
+            votes.query.delete()
         suggestions.query.delete()
     Location.query.filter_by(id=locId).delete()
     db.session().commit()
