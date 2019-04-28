@@ -75,7 +75,7 @@ def suggestion_edit(suggId):
 @app.route("/suggestion/vote/<suggId>", methods = ["POST"])
 @login_required
 def suggestion_vote(suggId):
-    voted = Vote.query.filter(Vote.suggestion_id == suggId).filter(Vote.account_id == current_user.id)
+    voted = Vote.query.filter(Vote.suggestion_id == suggId).filter(Vote.account_id == current_user.id).all()
     if voted:
         return redirect(url_for("suggestion_list"))
     
