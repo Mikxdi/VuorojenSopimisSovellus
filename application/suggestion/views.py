@@ -79,7 +79,7 @@ def suggestion_vote(suggId):
     if voted:
         return redirect(url_for("suggestion_list"))
     
-    nVote = Vote(current_user, suggId)
+    nVote = Vote(sugId, current_user)
     db.session().add(nVote)
     db.session().commit()
     return redirect(url_for("suggestion_list"))
