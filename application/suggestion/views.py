@@ -44,6 +44,8 @@ def suggestion_list():
 @app.route("/suggestion/remove/<suggId>", methods=["POST"])
 @login_required
 def suggestion_remove(suggId):
+    for votes in Vote.query.filter_by(suggestion_id = suggId):
+        votes.query.delete()
     Suggestion.query.filter_by(id=suggId).delete()
     db.session().commit()
     return redirect(url_for("suggestion_list"))
