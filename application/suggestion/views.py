@@ -85,7 +85,7 @@ def suggestion_vote(suggId):
     db.session().add(nVote)
     db.session().commit()
 
-    votes = Vote.query(Vote.suggestion_id).count()
+    votes = Vote.query.filter(Vote.suggestion_id == suggId).count()
     if votes >= 10:
         suggTrue = Suggestion.query.get(suggId)
         suggTrue.success = True
