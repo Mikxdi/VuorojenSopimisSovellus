@@ -22,6 +22,6 @@ class Vote(db.Model):
     suggestion_id = db.Column(db.Integer, db.ForeignKey('suggestion.id'))
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
 
-    def __init__(self, suggestion_id, user_id):
+    def __init__(self, suggestion_id, account_id):
         self.suggestion_id = suggestion_id
-        self.user_id = user_id
+        self.account_id = account_id
