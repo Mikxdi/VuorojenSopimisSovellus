@@ -80,8 +80,8 @@ def suggestion_vote(suggId):
     voted = Vote.query.filter(Vote.suggestion_id == suggId).filter(Vote.account_id == current_user.id).all()
     if voted:
         return redirect(url_for("suggestion_list"))
-    
-    nVote = Vote(suggId, current_user.id)
+    n = current_user.id
+    nVote = Vote(suggId, n)
     db.session().add(nVote)
     db.session().commit()
 
