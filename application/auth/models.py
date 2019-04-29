@@ -9,14 +9,15 @@ class User(db.Model):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+    roles = db.Column(db.String(144), nullable = False)
 
     vote = db.relationship("Vote", backref = 'account', cascade = "all, delete-orphan")
 
-    def __init__(self, name, username, password):
+    def __init__(self, name, username, password, roles):
         self.name = name
         self.username = username
         self.password = password
-  
+        self.roles = roles
     def get_id(self):
         return self.id
 

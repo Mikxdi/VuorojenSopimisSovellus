@@ -1,9 +1,8 @@
 from application.location.models import Location
-from application import app
+from application import app, login_required
 from flask import render_template, request, url_for, redirect
 from application import db
 from application.location.forms import LocationForm
-from flask_login import login_required
 from application.suggestion.models import Suggestion
 from application.suggestion.models import Vote
 
@@ -12,7 +11,7 @@ def location_form():
     return render_template("location/new.html", form=LocationForm())
 
 @app.route("/location/", methods=["POST"])
-@login_required
+@login_required(role = "ANY")
 def location_create():
     form = LocationForm(request.form)
 
@@ -23,12 +22,12 @@ def location_create():
     return redirect(url_for("location_list"))
 
 @app.route("/location/", methods=["GET"])
-@login_required
+@login_required(role = "ANY")
 def location_list():
     return render_template("location/list.html", form = LocationForm(), loc = Location.query.all())
 
 @app.route("/location/remove/<locId>", methods=["POST"])
-@login_required
+@login_required(role = "ANY")
 def location_remove(locId):
     for suggestions in Suggestion.query.filter_by(location_id = locId):
         for votes in Vote.query.filter_by(suggestion_id = suggestions.id):
@@ -40,7 +39,7 @@ def location_remove(locId):
 
 
 @app.route("/location/edit/<locId>", methods=["POST", "GET"])
-@login_required
+@login_required(role="ANY")
 def location_edit(locId):
     locUpdate = Location.query.get(locId)
 

@@ -1,10 +1,10 @@
 
 from application.suggestion.models import Suggestion, Vote
-from application import app
+from application import app, login_required
 from flask import render_template, request, url_for, redirect
 from application import db
 from application.suggestion.forms import SuggestionForm
-from flask_login import login_required, current_user
+from flask_login import current_user
 from application.location.models import Location
  
 @app.route("/suggestion/new/")
@@ -18,7 +18,7 @@ def suggestion_form():
     return render_template("suggestion/new.html", form=form)
 
 @app.route("/suggestion/", methods=["POST"])
-@login_required
+@login_required(role = "ANY")
 def suggestion_create():
     form = SuggestionForm(request.form)
     locations = []
@@ -37,12 +37,12 @@ def suggestion_create():
     return redirect(url_for("suggestion_list"))
 
 @app.route("/suggestion/", methods=["GET"])
-@login_required
+@login_required(role = "ANY")
 def suggestion_list():
     return render_template("suggestion/list.html", form = SuggestionForm(), sugg = Suggestion.query.all())
 
 @app.route("/suggestion/remove/<suggId>", methods=["POST"])
-@login_required
+@login_required(role = "ANY")
 def suggestion_remove(suggId):
     for votes in Vote.query.filter_by(suggestion_id = suggId):
         votes.query.delete()
@@ -51,7 +51,7 @@ def suggestion_remove(suggId):
     return redirect(url_for("suggestion_list"))
 
 @app.route("/suggestion/edit/<suggId>", methods = ["POST", "GET"])
-@login_required
+@login_required(role = "ANY")
 def suggestion_edit(suggId):
     suggUpdate = Suggestion.query.get(suggId)
 
@@ -75,7 +75,7 @@ def suggestion_edit(suggId):
     return redirect(url_for("suggestion_list"))
 
 @app.route("/suggestion/vote/<suggId>", methods = ["POST"])
-@login_required
+@login_required(role = "ANY")
 def suggestion_vote(suggId):
     voted = Vote.query.filter(Vote.suggestion_id == suggId).filter(Vote.account_id == current_user.id).all()
     if voted:
