@@ -30,7 +30,7 @@ def suggestion_create():
         return render_template("suggestion/new.html", form=form)
 
     
-    n = Suggestion(form.name.data, form.when.data, form.location.data, False)
+    n = Suggestion(form.name.data, form.when.data, form.location.data, False, current_user.id)
 
     db.session().add(n)
     db.session().commit()

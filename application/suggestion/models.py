@@ -8,14 +8,16 @@ class Suggestion(db.Model):
     when = db.Column(db.Date, nullable=False)
     location_id= db.Column(db.Integer, db.ForeignKey('location.id'), nullable = False)
     success = db.Column(db.Boolean, nullable = False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
     vote = db.relationship("Vote", backref = 'suggestion', cascade = "all, delete-orphan")
 
-    def __init__(self, name, when, location_id, success):
+    def __init__(self, name, when, location_id, success, account_id):
         self.name = name
         self.when = when
         self.location_id = location_id
         self.success = success
+        self.account_id = account_id
 
 class Vote(db.Model):
     id = db.Column(db.Integer, primary_key=True)

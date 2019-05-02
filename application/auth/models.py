@@ -12,6 +12,8 @@ class User(db.Model):
     roles = db.Column(db.String(144), nullable = False)
 
     vote = db.relationship("Vote", backref = 'account', cascade = "all, delete-orphan")
+    suggestion = db.relationship("Suggestion", backref ='account', lazy = True)
+    location = db.relationship("Location", backref ='account', lazy = True)
 
     def __init__(self, name, username, password, roles):
         self.name = name

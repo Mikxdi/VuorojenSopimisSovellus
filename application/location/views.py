@@ -5,6 +5,7 @@ from application import db
 from application.location.forms import LocationForm
 from application.suggestion.models import Suggestion
 from application.suggestion.models import Vote
+from flask_login import current_user
 
 @app.route("/location/new/")
 def location_form():
@@ -15,7 +16,7 @@ def location_form():
 def location_create():
     form = LocationForm(request.form)
 
-    n = Location(form.name.data, form.price.data)
+    n = Location(form.name.data, form.price.data, current_user.id)
 
     db.session().add(n)
     db.session().commit()
