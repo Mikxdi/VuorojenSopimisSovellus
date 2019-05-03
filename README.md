@@ -10,8 +10,12 @@ ja taulu paikoista, joissa vuoro pidetään
 Käyttäjät voivat lisätä ehdotuksia sopiviksi päiviksi. Mikäli kyseinen ehdotus saa päätetyn määrän 
 ääniä, muuttuu vuoron tila alustavasta varattavaan. Tätä kuvaa ehdotuksien listauksessa kohta Toteutuu, joka saa kymmenen äänen mennessä rikki arvokseen True
 
-## Linkki herokuun
+## Linkit
 [Heroku](https://vuoronvaraussovellus.herokuapp.com/)
+[Käyttötapaukset ja SQL-kyselyt](https://github.com/Mikxdi/VuorojenSopimisSovellus/blob/master/documentation/userstories.md)
+[Tietokantakaavio](https://github.com/Mikxdi/VuorojenSopimisSovellus/blob/master/documentation/Vuoronvaraussovellus_chart.png)
+[CREATE TABLE- lauseet](https://github.com/Mikxdi/VuorojenSopimisSovellus/blob/master/documentation/createtable.md)
+
 
 ## Sovelluksen asennus
 Ohjeet ohjelman käyttöön paikallisesti sekä sen lisäämiseen herokuun.
@@ -60,12 +64,12 @@ Herokuun lisääminen
 
 ## Ominaisuudet ja lyhyt kuvaus niiden käytöstä
 
-*Ohjelmaan on mahdollista ja suotavaa rekisteröityä. Tämä mahdollistaa muiden toimintojen käyttämisen. Sovellukseen rekisteröityminen tapahtuu sivun ylälaidassa olevasta "Rekisteröidy" nappulasta, Tämän 
+* Ohjelmaan on mahdollista ja suotavaa rekisteröityä. Tämä mahdollistaa muiden toimintojen käyttämisen. Sovellukseen rekisteröityminen tapahtuu sivun ylälaidassa olevasta "Rekisteröidy" nappulasta, Tämän 
 jälkeen pääset syöttämään haluamasi käyttäjänimen sekä salasanan. Sovelluksen kaikkien käyttäjien rooli on oletuksena tavallinen käyttäjä.
 
-*Rekisteröitymisen jälkeen sovellukseen voi kirjautua painamalla nappulaa kirjaudu ja syöttämällä oikeat tiedot salasana ja käyttäjätunnus kenttiin. Tämä kirjaa sinut sisään ja mahdollistaa muiden toimintojen käytön
+* Rekisteröitymisen jälkeen sovellukseen voi kirjautua painamalla nappulaa kirjaudu ja syöttämällä oikeat tiedot salasana ja käyttäjätunnus kenttiin. Tämä kirjaa sinut sisään ja mahdollistaa muiden toimintojen käytön
 
-*Paikan lisääminen: Kirjautuneena käyttäjä voi painaa "Lisää uusi paikka" nappia, jolla käyttäjä pääsee paikan luomis näkymään. Syötettyään pyydetyt tiedot käyttäjä siirtyy automaattisesti paikkojen listaus näkymään, jossa käyttäjä voi poistaa tai muokata luomiansa paikkoja, sekä näkee muiden käyttäjien luomat paikat.
+* Paikan lisääminen: Kirjautuneena käyttäjä voi painaa "Lisää uusi paikka" nappia, jolla käyttäjä pääsee paikan luomis näkymään. Syötettyään pyydetyt tiedot käyttäjä siirtyy automaattisesti paikkojen listaus näkymään, jossa käyttäjä voi poistaa tai muokata luomiansa paikkoja, sekä näkee muiden käyttäjien luomat paikat.
 
-*Ehdotuksen lisääminen: Käyttäjä voi lisätä uuden ehdotuksen painamalla "Lisää uusi ehdotus" nappia. Syöttämällä tiedot käyttäjä pääsee Ehdotus listaukseen. Ehdotus listauksessa käyttäjä voi antaa ääniä ehdotuksille tai muokata ja poistaa omia ehdotuksiaan.
+* Ehdotuksen lisääminen: Käyttäjä voi lisätä uuden ehdotuksen painamalla "Lisää uusi ehdotus" nappia. Syöttämällä tiedot käyttäjä pääsee Ehdotus listaukseen. Ehdotus listauksessa käyttäjä voi antaa ääniä ehdotuksille tai muokata ja poistaa omia ehdotuksiaan.
  
