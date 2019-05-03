@@ -33,7 +33,7 @@ def location_list():
 def location_remove(locId):
     for suggestions in Suggestion.query.filter_by(location_id = locId):
         Vote.query.filter_by(suggestion_id = suggestions.id).delete()
-        suggestions.query.delete()
+    Suggestion.query.filter_by(location_id = locId).delete()
     Location.query.filter_by(id=locId).delete()
     db.session().commit()
     return redirect(url_for("location_list"))
