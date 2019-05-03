@@ -7,35 +7,31 @@
             <th>Ehdotuksen nimi</th>
             <th>Aika</th>
             <th>Paikka</th>
+            <th>Hinta</th>
+            <th>Äänet</th>
             <th>Toteutuuko</th>
         </tr>
-        <ul>
-            {% for error in form.name.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-            {% for error in form.when.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
         {% for s in sugg %}
             <tr align="left">
-                <td>{{s.name}}</td>
+                <td>{{s.suggname}}</td>
                 <td>{{s.when}}</td>
-                <td>{{s.location}}</td>
+                <td>{{s.locname}}</td>
+                <td>{{s.price}}</td>
+                <td>{{s.votes}}</td>
                 <td>{{s.success}}</td>
                 <td>
-                    <form method="POST" action="{{ url_for('suggestion_vote', suggId = s.id)}}">
+                    <form method="POST" action="{{ url_for('suggestion_vote', suggId = s.suggid)}}">
                         <input type="submit" value="Anna ääni">
                     </form>
                 </td>
-                {% if(current_user.id == s.account_id) %}
+                {% if(current_user.id == s.account) %}
                     <td>
-                        <form method="POST" action="{{ url_for('suggestion_remove', suggId = s.id)}}">
+                        <form method="POST" action="{{ url_for('suggestion_remove', suggId = s.suggid)}}">
                             <input type="submit" value="Poista ehdotus">
                         </form>
                     </td>
                     <td>
-                        <form method="GET" action="{{ url_for('suggestion_edit', suggId = s.id)}}">
+                        <form method="GET" action="{{ url_for('suggestion_edit', suggId = s.suggid)}}">
                             <input type="submit" value="Muokkaa ehdotusta">
                         </form>
                     </td>

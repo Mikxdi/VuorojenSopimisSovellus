@@ -15,7 +15,8 @@ def location_form():
 @login_required(role = "ANY")
 def location_create():
     form = LocationForm(request.form)
-
+    if not form.validate():
+        return render_template("location/new.html", form=form)
     n = Location(form.name.data, form.price.data, current_user.id)
 
     db.session().add(n)

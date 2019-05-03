@@ -39,7 +39,8 @@ def suggestion_create():
 @app.route("/suggestion/", methods=["GET"])
 @login_required(role = "ANY")
 def suggestion_list():
-    return render_template("suggestion/list.html", form = SuggestionForm(), sugg = Suggestion.query.all())
+    suggestions = Suggestion.suggestionAndLocationListing()
+    return render_template("suggestion/list.html", sugg = suggestions)
 
 @app.route("/suggestion/remove/<suggId>", methods=["POST"])
 @login_required(role = "ANY")
@@ -57,7 +58,7 @@ def suggestion_edit(suggId):
 
     form = SuggestionForm(request.form)
     form.name.data = suggUpdate.name
-    form.when.data = suggUpdate.when
+    form.when.data = suggUpdate.whenis
     form.location.data = suggUpdate.location
 
     if request.method == "GET":
@@ -68,7 +69,7 @@ def suggestion_edit(suggId):
     
     form = SuggestionForm(request.form)
     suggUpdate.name = form.name.data
-    suggUpdate.when = form.when.data
+    suggUpdate.whenis = form.when.data
     suggUpdate.location = form.location.data
 
     db.session().commit()
