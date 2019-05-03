@@ -63,7 +63,7 @@ def suggestion_edit(suggId):
     form.location.choices = locations
     form.name.data = suggUpdate.name
     form.when.data = suggUpdate.whenis
-    form.location.data = suggUpdate.location
+    form.location.data = suggUpdate.location_id
 
     if request.method == "GET":
         return render_template("suggestion/edit.html", form = form, suggestion = suggUpdate)
@@ -72,9 +72,14 @@ def suggestion_edit(suggId):
         return render_template("suggestion/edit.html", form=form)
     
     form = SuggestionForm(request.form)
+    locations = []
+    for location in Location.query.all():
+        label = location.name
+        locations.append((location.id, label))
+    form.location.choices = locations
     suggUpdate.name = form.name.data
     suggUpdate.whenis = form.when.data
-    suggUpdate.location = form.location.data
+    suggUpdate.location_id = form.location.data
 
     db.session().commit()
     return redirect(url_for("suggestion_list"))
