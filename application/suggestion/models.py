@@ -26,7 +26,7 @@ class Suggestion(db.Model):
         " JOIN Location ON Location.id = Suggestion.location_id" 
         " JOIN Account ON Account.id = Suggestion.account_id"
         " LEFT JOIN Vote ON Vote.suggestion_id = Suggestion.id"
-        " GROUP BY Suggestion.name, Location.name, Suggestion.success, Suggestion.whenis")
+        " GROUP BY Suggestion.name, Location.name, Suggestion.success, Suggestion.whenis, Location.price")
         
         res = db.engine.execute(stmt)
 
