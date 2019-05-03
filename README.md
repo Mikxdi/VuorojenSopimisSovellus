@@ -73,3 +73,9 @@ jälkeen pääset syöttämään haluamasi käyttäjänimen sekä salasanan. Sov
 
 * Ehdotuksen lisääminen: Käyttäjä voi lisätä uuden ehdotuksen painamalla "Lisää uusi ehdotus" nappia. Syöttämällä tiedot käyttäjä pääsee Ehdotus listaukseen. Ehdotus listauksessa käyttäjä voi antaa ääniä ehdotuksille tai muokata ja poistaa omia ehdotuksiaan.
  
+## Kurssin lopuksi
+
+Ohjelma täyttää hyvin sille alussa pohditut tehtävät. Isoin tämän hetkinen puute on palaute käyttäjän annettua ääni. Tämän toteuttaminen ei kuitenkaan ollut prioriteeteissa kovin korkealla äänten määrän ollessa näkyvillä.
+Lisäksi ohjelmasta jäi pois alunperin ajatellut admin toiminnot. Tämän voin suoraa liittää ajan käytön hallintaan sekä oikein toimivien CRUD ominaisuuksien saamiseen muihin tauluihin, joka on ohjelmalle huomattavasti tärkeämpi funktio.
+
+Kurssin alkuvaiheessa python aiheutti runsaasti harmaita hiuksia, mikä kuitenkin helpotti merkittävästi kurssin edetessä. 
