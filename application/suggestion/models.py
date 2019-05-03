@@ -11,7 +11,7 @@ class Suggestion(db.Model):
     success = db.Column(db.Boolean, nullable = False)
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
-    vote = db.relationship("Vote", backref = 'suggestion', cascade = "all, delete-orphan")
+    vote = db.relationship("Vote", backref = 'suggestion', lazy = True)
 
     def __init__(self, name, whenis, location_id, success, account_id):
         self.name = name

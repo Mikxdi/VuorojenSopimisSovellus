@@ -2,7 +2,7 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('location_edit', locId = location.id) }}">
-  <table>
+  <table cellspacing ="10" cellpadding = "10">
     <tr>
       <td>
 	      {{ form.name.label }}
