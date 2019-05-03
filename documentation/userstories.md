@@ -14,7 +14,7 @@
 
 ## Ehdotusten listaaminen
 
-SELECT Suggestion.name, Suggestion.whenis, Location.name, Location.price, Suggestion.success, Suggestion.id, Account.id, COUNT(Vote.id) AS Votes FROM Suggestion
+* SELECT Suggestion.name, Suggestion.whenis, Location.name, Location.price, Suggestion.success, Suggestion.id, Account.id, COUNT(Vote.id) AS Votes FROM Suggestion
         JOIN Location ON Location.id = Suggestion.location_id 
         JOIN Account ON Account.id = Suggestion.account_id
         LEFT JOIN Vote ON Vote.suggestion_id = Suggestion.id
@@ -22,12 +22,12 @@ SELECT Suggestion.name, Suggestion.whenis, Location.name, Location.price, Sugges
 
 ## Käyttäjän lisääminen
 
-INSERT INTO Account (id, name, username, password, role)
+* INSERT INTO Account (id, name, username, password, role)
 	VALUES(?, ?, ?, ?);
 
 ## Käyttäjän sisäänkirjautuminen
 
-SELECT account.id AS account_id, , 
+* SELECT account.id AS account_id, , 
     account.name AS account_name, 
     account.username AS account_username, 
     account.password AS account_password, 
@@ -35,40 +35,56 @@ SELECT account.id AS account_id, ,
     FROM account
     WHERE account.username = ? AND account.password = ?;
 
-##Paikan luominen
+## Paikan luominen
 
-INSERT INTO location (id, name, price, account_id)
+* INSERT INTO location (id, name, price, account_id)
 	VALUES (?, ?, ?, ?);
 
-##Paikan poistaminen
+## Paikan poistaminen
 Poistetaan ensin äänet, jotka liittyvät ehdotuksiin joissa on poistettava paikka
-DELETE FROM Vote WHERE vote.suggestion_id = ?;
+
+
+* DELETE FROM Vote WHERE vote.suggestion_id = ?;
+
+
 Poistetaan ensin ehdotukset, joissa on kyseinen paikka
-DELETE FROM Suggestion WHERE suggestion.location_id = ?;
+
+
+* DELETE FROM Suggestion WHERE suggestion.location_id = ?;
+
+
 Poistetaan paikka
-DELETE FROM Location WHERE location.id = ?;
+
+
+* DELETE FROM Location WHERE location.id = ?;
 
 ## Ehdotuksen luominen
 
-INSERT INTO suggestion (id, name, whenis, location_id, success, account_id)
+* INSERT INTO suggestion (id, name, whenis, location_id, success, account_id)
 	VALUES(?, ?, ?, ?, ?);
 
 ## Ehdotuksen poisto
 
 Poistetaan ensin ehdotukseen liittyvät äänet
-DELETE FROM Vote WHERE vote.suggestion_id = ?;
+
+
+* DELETE FROM Vote WHERE vote.suggestion_id = ?;
+
+
 poistetaan ehdotus
-DELETE FROM Suggestion WHERE suggestion.id = ?;
+
+
+*DELETE FROM Suggestion WHERE suggestion.id = ?;
 
 
 ## Ehdotuksen muokkaus
 
-UPDATE Suggestion
+* UPDATE Suggestion
 SET name = ?, whenis = ?, location_id = ?
 WHERE suggestion.id = ?;
 
 ## Paikan muokkaus
 
-UPDATE Location
+* UPDATE Location
 SET name = ?, price = ?
 WHERE location.id = ?;
