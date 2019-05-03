@@ -56,12 +56,17 @@ def suggestion_edit(suggId):
     suggUpdate = Suggestion.query.get(suggId)
 
     form = SuggestionForm(request.form)
+    locations = []
+    for location in Location.query.all():
+        label = location.name
+        locations.append((location.id, label))
+    form.location.choices = locations
     form.name.data = suggUpdate.name
     form.when.data = suggUpdate.whenis
     form.location.data = suggUpdate.location
 
     if request.method == "GET":
-        return render_template("suggestion/edit.html" , form = form, suggestion = suggUpdate)
+        return render_template("suggestion/edit.html", form = form, suggestion = suggUpdate)
 
     if not form.validate():
         return render_template("suggestion/edit.html", form=form)

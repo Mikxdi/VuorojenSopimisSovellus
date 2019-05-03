@@ -50,7 +50,7 @@ def location_edit(locId):
     form.price.data = locUpdate.price
 
     if request.method == "GET":
-        return render_template("location/edit.html" , form = form, location = locUpdate)
+        return render_template("location/edit.html", form = form, location = locUpdate)
 
     if not form.validate():
         return render_template("location/edit.html", form=form)
